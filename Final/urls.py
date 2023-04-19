@@ -20,5 +20,5 @@ from GamesRate.views import mostrar_juego, crear_juego
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('juegos', mostrar_juego, name="juego"),
-    path('juegos/create', crear_juego, name="juego-create")
+    path('juegos/create', crear_juego, name="juegos-create")
 ]
