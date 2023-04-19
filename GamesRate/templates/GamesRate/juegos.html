@@ -1,0 +1,24 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Juegos{% endblock %}
+
+{% block titulo %}Juegos Opiniones: {{total_personas}}{% endblock %}
+
+{% block listado %} 
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Agregar">
+
+</form>
+
+
+<ul>
+    {% for juego in juegos %}
+        <li>{{juego}}</li>
+
+    {% endfor%}
+
+</ul>
+
+{% endblock %}
