@@ -1,0 +1,29 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Juegos{% endblock %}
+
+{% block titulo %}Juegos Opiniones: {{total_juegos}}{% endblock %}
+
+{% block listado %} 
+
+<form>
+    <p>
+        <label for="criterio_nombre">Criterio:</label>
+        <input type="text" name="criterio_nombre" maxlength="100" required="" id="criterio_nombre">
+    </p>
+
+    <p>
+        <input type="submit" value="Buscar">
+    </p>
+</form>
+
+
+<ul>
+    {% for juego in juegos %}
+        <li>{{juego}}</li>
+
+    {% endfor%}
+
+</ul>
+
+{% endblock %}

@@ -5,3 +5,7 @@ class JuegoForm(forms.Form):
     genero = forms.CharField(max_length=50)
     estrellas = forms.IntegerField()
     opinion = forms.CharField(max_length=200)
+
+
+class BuscarPersonasForm(forms.Form):
+    criterio_nombre = forms.CharField(max_length=100)

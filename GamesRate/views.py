@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from GamesRate.models import Juego
-from GamesRate.forms import JuegoForm
+from GamesRate.forms import JuegoForm, BuscarPersonasForm
+from django.views.generic import ListView
 
 def mostrar_juego(request):
 
@@ -28,6 +29,14 @@ def crear_juego(request):
         
     return render(request, "GamesRate/juegos.html", context)
 
+class BuscarJuegos(ListView):
+    model = Juego
+    context_object_name = "juegos"
 
-
-
+    def get_queryset(self):
+        f = BuscarPersonasForm(self.request.GET)
+        if f.is_valid():
+            return Juego.objects.filter(nombre__icontains=f.data
+            ["criterio_nombre"]).all()
+        else:
+            return Juego.objects.none()
