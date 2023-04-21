@@ -2,15 +2,9 @@
 
 {% block tittle %}Juegos{% endblock %}
 
-{% block titulo %}Juegos Opiniones: {{total_juegos}}{% endblock %}
+{% block titulo %}{{total_juegos}} Opiniones de Juegos {% endblock %}
 
 {% block listado %} 
-<form action="{% url 'juegos-create'%}" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Agregar">
-
-</form>
 
 
 <ul>

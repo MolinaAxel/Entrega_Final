@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from GamesRate.models import Juego
 from GamesRate.forms import JuegoForm, BuscarPersonasForm
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
 
 
 
@@ -10,25 +12,8 @@ def mostrar_juego(request):
     juegos = Juego.objects.all()
     total_juegos = len(juegos)
     context = {"juegos":juegos,
-               "total_juegos":total_juegos,
-               "form":JuegoForm()}
-    return render(request, "GamesRate/juegos.html", context)
-
-def crear_juego(request):
-
-    f = JuegoForm(request.POST)
-    context = {
-        "form":f
-    }
-
-    if f.is_valid():
-        Juego(nombre=f.data["nombre"], genero=f.data["genero"], estrellas=f.data["estrellas"], opinion=f.data["opinion"]).save()
-        context['form'] = JuegoForm()
-
-    
-    context["juegos"] = Juego.objects.all()
-    context["total_juegos"] = len(Juego.objects.all())
-        
+               "total_juegos":total_juegos
+               }
     return render(request, "GamesRate/juegos.html", context)
 
 class BuscarJuegos(ListView):
@@ -45,3 +30,22 @@ class BuscarJuegos(ListView):
     
 class JuegosDetail(DetailView):
     model = Juego # esto es igual a Juego.objects.get(id=pk)
+
+class JuegosCreate(CreateView):
+    model = Juego
+    success_url = reverse_lazy("juegos-list")
+    fields = '__all__'
+
+class JuegosUpdate(UpdateView):
+    model = Juego
+    success_url = reverse_lazy("juegos-list")
+    fields = '__all__'
+
+class JuegosDelete(DeleteView):
+    model = Juego
+    success_url = reverse_lazy("juegos-list")
+
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('juegos-list')

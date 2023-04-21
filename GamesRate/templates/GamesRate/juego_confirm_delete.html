@@ -1,0 +1,16 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Borrar-juego{% endblock %}
+
+{% block titulo %}Borrar la opinion: {{object.id}}?{% endblock %}
+
+{% block listado %} 
+
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Borrar"><a href="{% url 'juegos-list'%}"> Volver</a>
+
+</form>
+
+{% endblock %}

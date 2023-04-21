@@ -2,13 +2,13 @@
 
 {% block tittle %}Juegos{% endblock %}
 
-{% block titulo %}Juegos Opiniones: {{total_juegos}}{% endblock %}
+{% block titulo %}Buscar Opiniones{% endblock %}
 
 {% block listado %} 
 
 <form>
     <p>
-        <label for="criterio_nombre">Criterio:</label>
+        <label for="criterio_nombre">Juego:</label>
         <input type="text" name="criterio_nombre" maxlength="100" required="" id="criterio_nombre">
     </p>
 
@@ -20,7 +20,11 @@
 
 <ul>
     {% for juego in juegos %}
-        <li>{{juego}} <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a> </li> 
+        <li>{{juego}} 
+            <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a>
+            <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
+            <a href="{% url 'juegos-delete' juego.id %}"> Borrar </a>
+        </li> 
 
     {% endfor%}
 

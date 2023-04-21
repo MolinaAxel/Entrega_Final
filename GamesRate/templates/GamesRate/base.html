@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<header>
+    <nav>
+        <a href="{% url 'juego'  %}"> Inicio </a>
+        <a href="{% url 'juegos-create'  %}"> Crear </a>
+        <a href="{% url 'juegos-list'  %}"> Buscar </a>
+    </nav>
+
+</header>
+
 <h1>
     {% block titulo %}
 

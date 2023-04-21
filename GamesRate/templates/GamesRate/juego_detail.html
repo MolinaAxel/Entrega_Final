@@ -1,8 +1,16 @@
-<p>
+{% extends 'GamesRate/base.html' %}
 
-    {{object.nombre}}
+{% block tittle %}Juegos{% endblock %}
+
+{% block titulo %}Opinion de {{object.nombre}}{% endblock %}
+
+{% block listado %} 
+
+<p>
     <br>
     {{object.opinion}} -- Estrellas: {{object.estrellas}}
     <br>
     <a href="{% url 'juegos-list'%}"> volver </a>
 </p>
+
+{% endblock %}
