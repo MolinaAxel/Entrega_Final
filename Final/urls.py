@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from GamesRate.views import mostrar_juego, BuscarJuegos, JuegosDetail,JuegosCreate, JuegosUpdate, JuegosDelete,SignUp
+from GamesRate.views import mostrar_juego, BuscarJuegos, JuegosDetail,JuegosCreate, JuegosUpdate, JuegosDelete,SignUp, Login,Logout
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('juegos', mostrar_juego, name="juego"),
@@ -25,5 +25,7 @@ urlpatterns = [
     path('juegos/<pk>/update', JuegosUpdate.as_view(), name="juegos-update"),
     path('juegos/<pk>/delete', JuegosDelete.as_view(), name="juegos-delete"),
     path('signup/', SignUp.as_view(), name="signup"),
+    path('login/', Login.as_view(), name="login"),
+    path('logout/', Logout.as_view(), name="logout"),
 ]
 

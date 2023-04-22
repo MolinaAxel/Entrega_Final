@@ -10,6 +10,15 @@
 
 <header>
     <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout'%}">{{user.username}}  Logout</a>
+        {% else %}
+            <a href="{% url 'signup'%}">Signup</a>
+            <a href="{% url 'login'%}">Login</a>
+        {% endif %}
+        
+    </nav>
+    <nav>
         <a href="{% url 'juego'  %}"> Inicio </a>
         <a href="{% url 'juegos-create'  %}"> Crear </a>
         <a href="{% url 'juegos-list'  %}"> Buscar </a>
