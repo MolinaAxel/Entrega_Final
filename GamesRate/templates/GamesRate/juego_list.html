@@ -6,6 +6,7 @@
 
 {% block listado %} 
 
+
 <form>
     <p>
         <label for="criterio_nombre">Juego:</label>
@@ -17,11 +18,15 @@
     </p>
 </form>
 
+{% if not juegos %}
+    <h2>No hay post</h2>
+{% endif %}
 
 <ul>
     {% for juego in juegos %}
-        <li>
 
+
+        <li>
             {{juego}} 
             <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a>
             {% if user.is_authenticated and juego.dueño == user %}

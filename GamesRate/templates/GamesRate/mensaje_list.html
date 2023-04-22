@@ -1,0 +1,26 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Juegos{% endblock %}
+
+{% block titulo %}Mensajes{% endblock %}
+
+{% block listado %} 
+
+
+{% if not mensajes %}
+    <h2>No hay Mensajes</h2>
+{% endif %}
+
+
+{% for mensaje in mensajes %}
+    <li>
+        <p>{{mensaje.email}}</p>
+        <h3>{{mensaje.mensaje}}</h3>
+        {% if user.is_authenticated and mensaje.destinatario == user %}
+            <a href="{% url 'mensaje-delete' mensaje.id %}"> Borrar </a>
+        {% endif %}
+    </li> 
+ 
+{% endfor%}
+
+{% endblock %}

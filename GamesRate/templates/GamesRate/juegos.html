@@ -6,10 +6,22 @@
 
 {% block listado %} 
 
+{% if not juegos %}
+    <h2>No hay post</h2>
+{% endif %}
+
 
 <ul>
     {% for juego in juegos %}
-        <li>{{juego}}</li>
+        <li>
+            {{juego}}
+            <br>
+            {% if juego.imagen.url %}
+                <img src="{{ juego.imagen.url }}", height="100%", width="480px">
+                <br>
+                <h4>Publicador: {{juego.dueño}}   <a href="{% url 'juegos-detail' juego.id %}">Ver Mas</a></h4>
+            {% endif%}
+        </li>
 
     {% endfor%}
 
