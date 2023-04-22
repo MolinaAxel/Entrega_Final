@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from GamesRate.views import mostrar_juego, BuscarJuegos, JuegosDetail,JuegosCreate, JuegosUpdate, JuegosDelete,SignUp, Login,Logout
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('juegos', mostrar_juego, name="juego"),
@@ -27,5 +32,9 @@ urlpatterns = [
     path('signup/', SignUp.as_view(), name="signup"),
     path('login/', Login.as_view(), name="login"),
     path('logout/', Logout.as_view(), name="logout"),
+    path('logout/', Logout.as_view(), name="logout"),
+    
 ]
 
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

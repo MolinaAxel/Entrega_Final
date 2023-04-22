@@ -8,6 +8,8 @@ class Juego(models.Model):
     estrellas = models.IntegerField(default=0)
     opinion = models.TextField(max_length=200)
     dueño = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="dueño")
+    imagen = models.ImageField(upload_to="juegos", null=True, blank=True)
+
 
     def __str__(self):
         return f"{self.id} - {self.nombre} - GENERO: {self.genero} - {self.estrellas} Estrellas"
