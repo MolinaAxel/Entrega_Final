@@ -1,0 +1,15 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Perfil{% endblock %}
+
+{% block titulo %}Profile{% endblock %}
+
+{% block listado %} 
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Guardar">
+</form>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Juegos{% endblock %}
+
+{% block titulo %}Buscar Opiniones{% endblock %}
+
+{% block listado %} 
+
+
+<form>
+    <p>
+        <label for="criterio_nombre">Juego:</label>
+        <input type="text" name="criterio_nombre" maxlength="100" required="" id="criterio_nombre">
+    </p>
+
+    <p>
+        <input type="submit" value="Buscar">
+    </p>
+</form>
+
+{% if not juegos %}
+    <h2>No hay post</h2>
+{% endif %}
+
+<ul>
+    {% for juego in juegos %}
+
+
+        <li>
+            {{juego}} 
+            <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a>
+            {% if user.is_authenticated and juego.dueño == user %}
+                <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
+                <a href="{% url 'juegos-delete' juego.id %}"> Borrar </a>
+            {% endif %}
+        </li> 
+
+    {% endfor%}
+
+</ul>
+
+{% endblock %}

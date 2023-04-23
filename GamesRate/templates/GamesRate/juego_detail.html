@@ -1,0 +1,28 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Juegos{% endblock %}
+
+{% block titulo %}Opinion de {{object.nombre}}{% endblock %}
+
+
+{% block listado %} 
+
+{% if not object %}
+    <h2>No hay post</h2>
+{% endif %}
+
+
+<p>
+    <br>
+    {% if object.imagen %}
+        <img src="{{ object.imagen.url }}", height="100%", width="360px">
+        <br>
+    {% endif%}
+    <h4>Publicado por: {{object.dueño}} el {{object.creado_el}}</h4>
+    <br>
+    <h2>{{object.opinion}} -- Estrellas: {{object.estrellas}}</h2>
+    <br>
+    <a href="{% url 'juegos-list'%}"> volver </a>
+</p>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}GamesRate/signup{% endblock %}
+
+{% block titulo %}Registro de Usuario{% endblock %}
+
+{% block listado %} 
+
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <p class="fieldWrapper">
+            {{field.errors}}
+            {{ field.label_tag }} {{ field }}
+        </p>
+    {% endfor %}
+    <input type="submit" value="Registarse">
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'GamesRate/base.html' %}
+
+{% block tittle %}Juegos{% endblock %}
+
+{% block titulo %}{{total_juegos}} Opiniones de Juegos {% endblock %}
+
+{% block listado %} 
+
+{% if not juegos %}
+    <h2>No hay post</h2>
+{% endif %}
+
+
+<ul>
+    {% for juego in juegos %}
+        <li>
+            {{juego}}
+            <br>
+            {% if juego.imagen %}
+                <img src="{{ juego.imagen.url }}", height="100%", width="480px">
+                <br>
+            {% endif %}
+            <h4>Publicador: {{juego.dueño}}   <a href="{% url 'juegos-detail' juego.id %}">Ver Mas</a></h4>
+        </li>
+
+    {% endfor%}
+
+</ul>
+
+{% endblock %}
