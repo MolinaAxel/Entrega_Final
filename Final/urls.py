@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from GamesRate.views import mostrar_juego, BuscarJuegos, JuegosDetail,JuegosCreate, JuegosUpdate, JuegosDelete,SignUp, Login,Logout, ProfileUpdate, ProfileCreate, MensajeCreate,MensajeDelete,MensajeList
+from GamesRate.views import about, index,mostrar_juego, BuscarJuegos, JuegosDetail,JuegosCreate, JuegosUpdate, JuegosDelete,SignUp, Login,Logout, ProfileUpdate, ProfileCreate, MensajeCreate,MensajeDelete,MensajeList
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mostrar_juego, name="juego"),
+    path('index',index, name="index"),
     path('juegos/create', JuegosCreate.as_view(), name="juegos-create"),
     path('juegos/list', BuscarJuegos.as_view(), name="juegos-list"),
     path('juegos/<pk>/detail', JuegosDetail.as_view(), name="juegos-detail"),
@@ -32,12 +33,12 @@ urlpatterns = [
     path('signup/', SignUp.as_view(), name="signup"),
     path('login/', Login.as_view(), name="login"),
     path('logout/', Logout.as_view(), name="logout"),
-    path('logout/', Logout.as_view(), name="logout"),
     path('profile/<pk>/update', ProfileUpdate.as_view(), name="profile-update"),
     path('profile/create', ProfileCreate.as_view(), name="profile-create"),
     path('mensaje/enviar', MensajeCreate.as_view(), name="mensaje-create"),
     path('mensaje/list', MensajeList.as_view(), name="mensaje-list"),
     path('mensaje/<pk>/delete', MensajeDelete.as_view(), name="mensaje-delete"),
+    path('about', about, name="about"),
 ]
 
 

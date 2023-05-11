@@ -1,11 +1,11 @@
-{% extends 'GamesRate/base.html' %}
+{% extends 'GamesRate/base2.html' %}
 
 {% block tittle %}Juegos{% endblock %}
 
 {% block titulo %}Opinion de {{object.nombre}}{% endblock %}
 
 
-{% block listado %} 
+{% block main %} 
 
 {% if not object %}
     <h2>No hay post</h2>
@@ -14,7 +14,7 @@
 
 <p>
     <br>
-    {% if object.imagen.url %}
+    {% if object.imagen %}
         <img src="{{ object.imagen.url }}", height="100%", width="360px">
         <br>
     {% endif%}

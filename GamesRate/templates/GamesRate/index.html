@@ -1,0 +1,122 @@
+{% extends "GamesRate/base2.html" %}
+
+
+{% block main %}
+
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      
+        {% for juego in juegos %}
+          {% if forloop.first %}
+            <div class="carousel-item active">
+          {% else %}
+            <div class="carousel-item">
+          {% endif %}
+            {% if juego.imagen %}
+              <img src="{{juego.imagen.url}}">
+            {% endif %}
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>{{juego.nombre}}</h1>
+                <p>{{juego.opinion}}</p>
+                <p><a class="btn btn-lg btn-primary" href="{% url 'juegos-detail' juego.id%}">Ver Mas</a></p>
+              </div>
+            </div>
+          </div>
+        
+        {% endfor %}
+
+        
+
+      
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+
+      {% for juego in juegos %}
+    
+        <div class="col-lg-4">
+          {% if juego.imagen %}
+          <img src="{{juego.imagen.url}}" height="144" width="144">
+          {% endif %}
+            <h2>{{juego.nombre}}</h2>
+          <p>{{juego.opinion}}</p>
+          <h4>{{juego.dueño}}</h4>
+          <p><a class="btn btn-secondary" href="{% url 'juegos-detail' juego.id%}">Ver Detalles »</a></p>
+        </div><!-- /.col-lg-4 -->
+      
+      {% endfor %}
+  
+      
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">El puente</h2>
+        <p class="lead">vistas lindas del rio</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        
+          <img src="./curso_coder_house_files/puente-corrientes-resistencia.jpeg" height="400" width="400">
+        
+
+      </div>
+    </div>
+
+    
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Las cataratas</h2>
+        <p class="lead">un destino imperdible</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        
+          <img src="./curso_coder_house_files/cataratas-del-iguazu-misiones.jpeg" height="400" width="400">
+        
+
+      </div>
+    </div>
+
+    
+
+
+    <!-- /END THE FEATURETTES -->INDEX.
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Back to top</a></p>
+    <p>© 2017–2021 Company, Inc. · <a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Privacy</a> · <a href="https://getbootstrap.com/docs/5.0/examples/carousel/#">Terms</a></p>
+  </footer>
+</main>
+
+{% endblock %}

@@ -8,6 +8,12 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
+def index(request):
+    context = {
+        "juegos": Juego.objects.all()
+    }
+    return render(request, "GamesRate/index.html", context)
+
 def about(request):
     return render(request, "GamesRate/about.html")
 
